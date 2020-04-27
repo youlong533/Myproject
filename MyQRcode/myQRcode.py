@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 from MyQR import myqr
-from MyQRcode import QRCode
 
 def myQRcode(content,icon_path):
     myqr.run(
