@@ -1,4 +1,4 @@
-from MyQRcode import QRCode
+import QRCode
 
 def Scan_qrcode():
     print("           Scan a QRcode            ")

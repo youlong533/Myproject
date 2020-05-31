@@ -55,7 +55,7 @@ def decode_qr_code(code_img_path):
         raise FileExistsError(code_img_path)
 
     # Here, set only recognize QR Code and ignore other type of code
-    return pyzbar.decode(Image.open(code_img_path), symbols=[pyzbar.ZBarSymbol.QRCODE])
+    return pyzbar.pyzbar.decode(Image.open(code_img_path), symbols=[pyzbar.pyzbar.ZBarSymbol.QRCODE])
 
 
 if __name__ == "__main__":
