@@ -1,6 +1,7 @@
 # _*_ coding:utf8 _*_
 import  requests
 import  json
+from Myproject.Tools import signature
 
 class RunMain:
     # 实例初始化
@@ -29,11 +30,17 @@ class RunMain:
 
 
 if __name__ == '__main__':
+    param = "campDateId" + "345718657178255935" + "classId" + "" + "groupId" + "" + "pageNo" + "1" + "pageSize" + "20" + "tagType" + "" + "orderBy" + "selfTag"
+    token = '53680117e00b483a323b8930a2379251'
+    S = signature.signature()
+    sign = S.s(param,token)
     headers = {
-        'Content-Type': 'application/json;charset=UTF-8'
-    }
-    url = 'http://testsmart.kakahui.net/api/v1/copyWxName/reportCopyWxName'
-    data = {'customerId':'19900328','wechatName':"游龙",'saleId':2,'kanbanType':1}
+        'Content-Type': 'application/json;charset=UTF-8',
+        'token': token,
+        'signature':sign
+}
+    url = 'https://presmartapi.kakahui.net/knowledge-smart-crm/api/v1/realTimeKanBan/queryHitKeyWordsList'
+    data = {"campDateId":"345718657178255935","classId":"","groupId":"","pageNo":1,"pageSize":20,"tagType":"","orderBy":"selfTag"}
     data = json.dumps(data,ensure_ascii=False).encode('utf8').decode('latin1')
     run = RunMain(headers,url,'get',data)
 #    res = RunMain.send_post(data,url)
