@@ -31,7 +31,7 @@ class RunMain:
 
 if __name__ == '__main__':
     param = "campDateId" + "345718657178255935" + "classId" + "" + "groupId" + "" + "pageNo" + "1" + "pageSize" + "20" + "tagType" + "" + "orderBy" + "selfTag"
-    token = '53680117e00b483a323b8930a2379251'
+    token = 'c673018d7ed9b1f6b96645c9158c9f40'
     S = signature.signature()
     sign = S.s(param,token)
     headers = {

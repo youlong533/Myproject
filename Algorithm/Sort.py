@@ -16,4 +16,17 @@ def selectionSort(arr):
         newArr.append(arr.pop(smallest))    #list.pop(index)————删除并返回list中索引为index的值
     return newArr
 
-print(selectionSort([5,3,6,2,10,7,14,65]))
+def quicksort(arr):
+    if  len(arr) < 2:
+        return arr
+    else:
+        pivot = arr[0]
+        less = [i for  i in arr[1:] if i <= pivot]
+        greater = [i for i in arr[1:] if i > pivot]
+        return quicksort(less) + [pivot] + quicksort(greater)
+
+def print_items(list):
+    for item in list:
+        print(item)
+
+print(quicksort([5,3,6,2,10,7,14,65]))
