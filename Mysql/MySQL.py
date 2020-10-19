@@ -1,5 +1,5 @@
 # _*_coding:utf8 _*_
-import pymysql,json
+import pymysql
 
 class Ex_mysql:
 

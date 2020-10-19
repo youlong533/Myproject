@@ -45,4 +45,16 @@ if __name__ == '__main__':
     run = RunMain(headers,url,'get',data)
 #    res = RunMain.send_post(data,url)
 #    print(res)
-    print(run.res)
+#     print(run.res)
+
+    u_test = 'https://testkcxt.kakahui.net/knowledge-wechat-client/api/v1/course/checkQRIsExpired'
+    data_test = {'type': '1',
+                 'packageId': '353254591846445079',
+                 'proCode': 'WM180F',
+                 'classId': '351404578921033923',
+                 'wechatType': '1',
+                 'scanQr': '1',
+                 'qrCodeType': '0'
+                 }
+    run_test = RunMain(headers, u_test, 'post', data_test)
+    # print(run_test.res)
