@@ -47,14 +47,15 @@ if __name__ == '__main__':
 #    print(res)
 #     print(run.res)
 
-    u_test = 'https://testkcxt.kakahui.net/knowledge-wechat-client/api/v1/course/checkQRIsExpired'
-    data_test = {'type': '1',
-                 'packageId': '353254591846445079',
-                 'proCode': 'WM180F',
-                 'classId': '351404578921033923',
-                 'wechatType': '1',
-                 'scanQr': '1',
-                 'qrCodeType': '0'
-                 }
+    u_test = 'http://testsjob.kakahui.net/api/v1/fetchCampController/fetchRealTimeData'
+    # data_test = {'type': '1',
+    #              'packageId': '353254591846445079',
+    #              'proCode': 'WM180F',
+    #              'classId': '351404578921033923',
+    #              'wechatType': '1',
+    #              'scanQr': '1',
+    #              'qrCodeType': '0'
+    #              }
+    data_test = {}
     run_test = RunMain(headers, u_test, 'post', data_test)
-    # print(run_test.res)
+    print(run_test.res)
