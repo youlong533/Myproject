@@ -1,11 +1,11 @@
-from MyQRcode import QRCode
+import Myproject.MyQRcode.QRCode as QRCode
 
 def Scan_qrcode():
     print("           Scan a QRcode            ")
     print("=====================================")
     print("1、请输入图片保存地址：")
     save_path = input('>>:').strip()
-    results = QRCode.decode_qr_code(save_path)
+    results = QRCode.QRCode.decode_qr_code(save_path)
     print("2、正在解码：")
     if len(results):
         print("解码结果是：")

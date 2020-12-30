@@ -31,7 +31,7 @@ class RunMain:
 
 if __name__ == '__main__':
     param = "campDateId" + "345718657178255935" + "classId" + "" + "groupId" + "" + "pageNo" + "1" + "pageSize" + "20" + "tagType" + "" + "orderBy" + "selfTag"
-    token = '53680117e00b483a323b8930a2379251'
+    token = 'c673018d7ed9b1f6b96645c9158c9f40'
     S = signature.signature()
     sign = S.s(param,token)
     headers = {
@@ -45,4 +45,17 @@ if __name__ == '__main__':
     run = RunMain(headers,url,'get',data)
 #    res = RunMain.send_post(data,url)
 #    print(res)
-    print(run.res)
+#     print(run.res)
+
+    u_test = 'http://testsjob.kakahui.net/api/v1/fetchCampController/fetchRealTimeData'
+    # data_test = {'type': '1',
+    #              'packageId': '353254591846445079',
+    #              'proCode': 'WM180F',
+    #              'classId': '351404578921033923',
+    #              'wechatType': '1',
+    #              'scanQr': '1',
+    #              'qrCodeType': '0'
+    #              }
+    data_test = {}
+    run_test = RunMain(headers, u_test, 'post', data_test)
+    print(run_test.res)
