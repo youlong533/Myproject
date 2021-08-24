@@ -1,11 +1,68 @@
-import Myproject.MyQRcode.QRCode as QRCode
+# -*- coding:utf-8 -*-
+import os
+import qrcode
+from PIL import Image
+import pyzbar.pyzbar as pyzbar
+
+
+class QRCode:
+
+    def make_qr_code(content, save_path=None):
+        qr_code_maker = qrcode.QRCode(
+            version=5,
+            error_correction=qrcode.constants.ERROR_CORRECT_M,
+            box_size=8,
+            border=4)
+        qr_code_maker.add_data(data=content)
+        qr_code_maker.make(fit=True)
+        img = qr_code_maker.make_image(fill_color="black", back_color="white")
+        if save_path:
+            img.save(save_path)
+        else:
+            img.show()  # 中间图不显示
+
+    def make_qr_code_with_icon(content, icon_path, save_path=None):
+        if not os.path.exists(icon_path):
+            raise FileExistsError(icon_path)
+
+        # First, generate an usual QR Code image
+        qr_code_maker = qrcode.QRCode(version=5,
+                                      error_correction=qrcode.constants.ERROR_CORRECT_H,
+                                      box_size=8,
+                                      border=4)
+        qr_code_maker.add_data(data=content)
+        qr_code_maker.make(fit=True)
+        qr_code_img = qr_code_maker.make_image(
+            fill_color="black", back_color="white").convert('RGBA')
+
+        # Second, load icon image and resize it
+        icon_img = Image.open(icon_path)
+        code_width, code_height = qr_code_img.size
+        icon_img = icon_img.resize(
+            (code_width // 4, code_height // 4), Image.ANTIALIAS)
+
+        # Last, add the icon to original QR Code
+        qr_code_img.paste(icon_img, (code_width * 3 // 8, code_width * 3 // 8))
+
+        if save_path:
+            qr_code_img.save(save_path)  # 保存二维码图片
+            qr_code_img.show()  # 显示二维码图片
+        else:
+            print("save error!")
+
+    def decode_qr_code(code_img_path):
+        if not os.path.exists(code_img_path):
+            raise FileExistsError(code_img_path)
+
+        # Here, set only recognize QR Code and ignore other type of code
+        return pyzbar.decode(Image.open(code_img_path), symbols=[pyzbar.ZBarSymbol.QRCODE])
 
 def Scan_qrcode():
     print("           Scan a QRcode            ")
     print("=====================================")
     print("1、请输入图片保存地址：")
     save_path = input('>>:').strip()
-    results = QRCode.QRCode.decode_qr_code(save_path)
+    results = QRCode.decode_qr_code(save_path)
     print("2、正在解码：")
     if len(results):
         print("解码结果是：")

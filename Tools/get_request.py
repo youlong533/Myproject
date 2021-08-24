@@ -16,7 +16,7 @@ class RunMain:
     # 封装一个post方法
     def send_post(self,headers,u,data=None):
         res = requests.post(headers=headers,url=u,data=data).json()
-#        return json.dumps(res,indent=2,sort_keys=True)
+        # return json.dumps(res,indent=2,sort_keys=True)
         return res
 
     # 写一个方法，判断是get的话调用get请求，是post的话调用post请求

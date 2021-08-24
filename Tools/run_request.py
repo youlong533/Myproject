@@ -1,5 +1,6 @@
 import requests
 
-url = 'http://testsjob.kakahui.net/api/v1/fetchCampController/fetchRealTimeData'
-res = requests.post(url).json()
+url = 'http://precbj.kakahui.net/liveBalance/balance'
+data = {"balanceMonth":"2021-05"}
+res = requests.post(url,data).json()
 print(res)

@@ -73,8 +73,11 @@ if __name__ == "__main__":
         QRCode.make_qr_code(code_con, "./1.jpg", "qrcode.png")  # 内容，center图片，生成二维码图片
         print("图片已保存，名称为：qrcode.png")
     else:
-        results = QRCode.decode_qr_code("1.jpg")
-        print("2、正在解码：")
+        print("           Scan a QRcode            ")
+        print("2、请输入图片保存地址：")
+        save_path = input('>>:').strip()
+        results = QRCode.decode_qr_code(save_path)
+        print("3、正在解码：")
         if len(results):
             print("解码结果是：")
             print(results[0].data.decode("utf-8"))
